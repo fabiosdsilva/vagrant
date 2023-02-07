@@ -1,5 +1,8 @@
-!/bin/bash
+#! /bin/bash
 
+touch ~/.docker.sh
+
+echo -e "
 sudo apt-get install ca-certificates curl gnupg lsb-release
 sudo mkdir -p /etc/apt/keyrings
 
@@ -17,3 +20,7 @@ newgrp docker
 
 sudo systemctl enable docker.service
 sudo systemctl enable containerd.service
+" > .docker.sh
+
+sudo chmod 777 .docker.sh
+sudo apt install net-tools
