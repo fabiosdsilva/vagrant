@@ -1,0 +1,13 @@
+Vagrant.configure("2") do |config|
+  config.vm.define "server" do |server|
+    server.vm.box = "ubuntu/focal64"
+    server.vm.hostname = "server"
+    server.vm.box_download_insecure = true
+    server.vm.network "public_network", bridge: "Realtek Gaming GbE Family Controller", ip: "192.168.0.130"
+    server.vm.provision "shell", path: "script.sh"
+    config.vm.provider "virtualbox" do |v|
+      v.memory = 2048
+      v.cpus = 4
+    end
+  end
+end
